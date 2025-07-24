@@ -1,0 +1,29 @@
+input{
+    display: flex;
+    flex-direction: column;
+    width: 70vh;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+button{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.newAcc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 40px;
+    border-radius: 15px;
+}
+
+.navStyle{
+    position: absolute;
+    right: 20px;
+    top:10px;
+    display: flex;
+    gap:20px
+}
