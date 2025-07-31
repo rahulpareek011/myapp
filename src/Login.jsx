@@ -6,28 +6,41 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+
     const handleSubmit = (e) => {
-    e.preventDefault()
+        e.preventDefault()
 
-    // Get saved user from localStorage
-    const savedUser = JSON.parse(localStorage.getItem("user"))
+        // Get saved user from localStorage
+        const savedUser = JSON.parse(localStorage.getItem("user"))
 
-    if (!savedUser) {
-        alert("No user found. Please sign up first.")
-        return
+
+        if (!savedUser) {
+            alert("user not available or not found. Please sign up first.")
+            return
+        }
+
+        // Check if email and password match
+        if (savedUser.email === email && savedUser.password === password) {
+            alert("Login Successful")
+        }
+        else if (savedUser.email != email && savedUser.password != password) {
+            alert("Invalid Email or Password")
+        }
+        else if (savedUser.email != email) {
+            alert("Invalid Email")
+        }
+        else if (savedUser.password != password) {
+            alert("Invalid Password")
+        }
+
+        // Clear form
+        setEmail('')
+        setPassword('')
     }
 
-    // Check if email and password match
-    if (savedUser.email === email && savedUser.password === password) {
-        alert("Login Successful 🎉")
-    } else {
-        alert("Invalid Email or Password ❌")
+    const logOut = () => {
+        localStorage.clear("user")
     }
-
-    // Clear form
-    setEmail('')
-    setPassword('')
-}
 
     return (
         <div>
@@ -53,6 +66,7 @@ const Login = () => {
                     <br />
                     <span>new user?</span>
                     <Link to='/signup'> SignUp</Link>
+                    <button onClick={logOut}>Logout</button>
 
                 </form>
 
